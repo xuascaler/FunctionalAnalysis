@@ -1,0 +1,55 @@
+\documentclass{article}
+\usepackage{amsthm}
+
+\title{Convexity}
+\author{xuascaler}
+\date{\today}
+
+\newtheorem*{definition}{Definition}
+\newtheorem*{remark}{Remark}
+\newtheorem*{property}{Property}
+
+\begin{document}
+
+\maketitle
+
+\section*{1. The Minkowski Functional}
+Let $X$ be a vector space and $A \subset X$ be convex set containing $0$. Moreover, we assume tha $A$ is absorbing,
+i.e. $\forall x \in X$, we can find $t>0$ large s.t. $x \in tA$.
+
+\begin{definition}
+    The \textbf{Minkowski Functional} $\mu_{A}$ associated to $A$ is the function $\mu_{A}: X \rightarrow R$ defined by
+    \begin{center} $\mu_{A} = \inf\{t > 0: x \in tA\}$ \end{center}
+\end{definition}
+
+\begin{remark} \hfill
+    \begin{enumerate}
+        \item It is not a linear functional in the sense we will define later.
+        \item Since $A$ is absorbing, $0 \in A$.
+        \item Since $A$ is convex, we have: if $x \in tA, t > 0$ and $s>t$, then $x \in sA$.
+        \begin{proof}
+            if $x = ty$ for some $y \in A$, then $x=s(\frac{t}{s}y + \frac{s-t}{s}0)$. \(A \mbox{ is convex},
+            0 \in A, y \in A \Rightarrow \frac{t}{s}y + \frac{s-t}{s}0 \in A\), so $x \in sA$.
+        \end{proof}
+        \item \(\{x \in X \mid \mu_{A}(x) < 1\} \subset A \subset \{x \in X \mid \mu_{A}(x) \le 1\}\)
+        \begin{proof} \hfil
+            \begin{itemize}
+                \item if $\mu_A(x) < 1$, then $\exists \epsilon > 0$ s.t. $\mu_A(x) \le 1 - \epsilon$. so $x \in (1 - \frac{\epsilon}{2})A$
+                \item if $x \in A$, then by definition, $\mu_A(x) \le 1$.
+            \end{itemize}
+        \end{proof}
+    \end{enumerate}    
+\end{remark}
+\begin{property} if $A \subset X$ is convex and absorbing, then
+    \begin{enumerate}
+        \item $\mu_A(x + y) \le \mu_A(x) + \mu_A(y)$
+        \item $\forall t \ge 0, \mu_A(tx) = t\mu_A(x)$
+        \item if $A$ is also balanced, then $\mu_A$ is a semi-norm.
+    \end{enumerate}
+    \begin{proof} \hfill
+       \begin{enumerate}
+        \item for any $\epsilon > 0$, let $t=\mu_A(x) + \epsilon, s=\mu_A(y) + \epsilon$.
+       \end{enumerate} 
+    \end{proof}
+\end{property}
+\end{document}
