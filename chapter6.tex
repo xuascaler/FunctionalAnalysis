@@ -49,7 +49,33 @@ i.e. $\forall x \in X$, we can find $t>0$ large s.t. $x \in tA$.
     \begin{proof} \hfill
        \begin{enumerate}
         \item for any $\epsilon > 0$, let $t=\mu_A(x) + \epsilon, s=\mu_A(y) + \epsilon$.
+        then $\frac{x}{t} \in A, \frac{y}{s} \in A$. 
+        By Convexity, $\frac{x+y}{s+t} = \frac{t}{s+t}\frac{x}{t} + \frac{s}{s+t}\frac{y}{s} \in A$,
+        By definition, $\forall \epsilon > s, \mu_A(x+y) \le s + t = \mu_A(x) + \mu_A(y) + 2\epsilon$,
+        so $\mu_A(x+y) \le \mu_A(x) + \mu_A(y)$. 
+        \item By definition, 
+        $
+            \forall t>0, \mu_A(tx) = \inf\{s>0 \mid tx \in sA\} 
+                                   = \inf\{s>0 \mid x \in \frac{s}{t}A\}
+                                   = t\inf\{\frac{s}{t}>0 \mid x \in \frac{s}{t}A\}
+                                   = t\mu_A(x)
+        $
+        \item By definition, $A$ is balanced $\Leftrightarrow$ $\forall |\alpha| \le 1, \alpha A \subset A$
+        In particular, $\forall |\alpha|=1, \alpha A = A$, because $\alpha = -1, -A \subset A, A \subset -A$.
+        Now $\forall \alpha \neq 0$, we get
+        $
+            \mu_A(\alpha x) = \inf\{t > 0 \mid \alpha x \in tA\}
+                            = \inf\{t > 0 \mid x \in \frac{t}{\alpha}A\}
+                            = \inf\{t > 0 \mid x \in \frac{t}{-\alpha}A\}
+                            = \inf\{t > 0 \mid x \in \frac{t}{|\alpha|}A\}
+                            = |\alpha|\inf\{\frac{t}{|\alpha|} > 0 \mid x \in \frac{t}{|\alpha|}A\}
+                            = |\alpha|\mu_A(x)
+        $
        \end{enumerate} 
     \end{proof}
+    As we have seen last time, 
+    any Frech\'et space is locally convex, and the topology is induced by a complete translation-invariant metric d. 
+    By using Minkowski functional on can prove the converse.
+    
 \end{property}
 \end{document}

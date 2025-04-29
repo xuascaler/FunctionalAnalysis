@@ -1,42 +1,91 @@
 \documentclass{article}
-\usepackage{amsmath}
-\usepackage{graphicx}
+\usepackage{amsthm}
+\usepackage{amsfonts}
 
-\title{LaTeX Demo Document}
-\author{Your Name}
+\title{Topological Vector Space}
+\author{xuascaler}
 \date{\today}
 
-\begin{document}
+\newtheorem*{property}{Property}
+\newtheorem*{definition}{Definition}
+\newtheorem*{remark}{Remark}
+\newtheorem*{example}{Example}
+\newtheorem*{corollary}{Corollary}
 
+\begin{document}
 \maketitle
 
-\section{Topology Vector Space}
-TVS has a local base $B_0$ s.t. 
-\[ \forall U, V \in B_{0}, \exists W \in B_{0}, W \subseteq U \cap V \]
-\[ \forall U \in B_{0}, \exists V \in B_{0}, V + V \cap B_{0 }\]
-\[ \forall U \in B_{0}, \text{U is absobing and balanced.}\]
-conversely, such a collection determines a TVS structure.
-\section{Math Mode}
-Here is an inline equation: \( E = mc^2 \).
+\section*{1. Local geometry of topological vector space}
+Let $(X, \mathcal{F})$ be a topological space.
+\begin{remark} \hfill
+  \begin{itemize}
+    \item A base for $\mathcal{F}$ is a subcollection 
+    $\mathcal{F}' \subset \mathcal{F}$ s.t. 
+    $\forall U \in \mathcal{F}, \exists V \in \mathcal{F}', V \subset U$.
+    A base 
+    $
+      \mathcal{F}'$ determines $\mathcal{F} \Leftrightarrow
+      \exists S, \forall U \subset \mathcal{F},
+      U = \{\cup e_i \mid i \in S, e_i \in \mathcal{F}\}
+    $.
+    \item  A local base of $x$ is a subcollection 
+    $\mathcal{F}_x' \subset \mathcal{F}_x
+    \textnormal{ s.t }. \forall U \subset \mathcal{F}_x, \exists V \in \mathcal{F}_x' \textnormal{ s.t } V \subset U$.
+    However, elements in $\mathcal{F}_x$ may be not union of elements in $\mathcal{F}_x'$.
+  \end{itemize}
+  \begin{example}
+    $(X, d)$ is a metric space.
+    \begin{itemize}
+      \item $\mathcal{F}' = \{B(x, r) \mid x \in X, r > 0\}$ is a base.
+      \item $\mathcal{F}' = \{B(x, r), \mid\}$ is a local at x.
+      \item $\mathcal{F}' = \{B(x, \frac{1}{n}) \mid n \in \mathbb{N}\}$
+      anohter local base at x, countable elements.
+    \end{itemize}
+  \end{example}
+  Now let X be topological vector space. Last time we showed that 
+  $\forall a \in X, \forall \alpha \neq 0$, the maps
+  \begin{itemize}
+    \item $T_a: X \rightarrow X, x \rightarrow x + a$
+    \item $M_a: X \rightarrow X, x \rightarrow \alpha x$
+  \end{itemize}
+  are both homeomorphism. As a consequence, we see
+  \begin{corollary}
+    $
+    \textnormal{A set }  A \subset X \textnormal{ is open} \Leftrightarrow
+    a + A \textnormal{ is open}, \forall a \in X \Leftrightarrow
+    \alpha A \textnormal{ is open}, \forall \alpha \neq 0.
+    $ 
+  \end{corollary}
+\end{remark} 
+  So the topological $\mathcal{F}$ is determined by any local base at $0$ 
+  whose elements have special gemometric properties for topological vector space.
+\begin{definition}
+  $X$ is locally convex if there is a local base whose elements is convex.
+\end{definition}
+\begin{example}
+  Normed Vector Space are locally convex since $\{B(0, r) \mid r > 0\}$ are convex.
+  \begin{proof}
+    $
+    x, y \in B(0, r) \Leftrightarrow \|x\| < r, \|y\| < r \Leftrightarrow 
+    \|\alpha x + (1 - \alpha)y\| \le \alpha\|x\| + (1 - \alpha)\|y\| \le r
+    $
+  \end{proof}
+\end{example}
+A set $E \subset X$ is absorbing if 
+$
+\forall x \in X, \exists \delta > 0 \textnormal{ s.t. } \delta x \in E 
+\forall |\alpha| < \delta.
+$(Obviously $0 = 0 * x \in E$)
 
-And here is a displayed equation:
-\[
-\int_{0}^{\infty} e^{-x^2} \, dx = \frac{\sqrt{\pi}}{2}
-\]
-
-\section{Enumerations}
-\begin{enumerate}
-  \item First item
-  \item Second item
-  \item Third item
-\end{enumerate}
-
-\section{Including Graphics}
-\begin{center}
-\includegraphics[width=0.4\textwidth]{example-image}
-\end{center}
-
-\section{Conclusion}
-This concludes the demo.
+\begin{property}
+In a topological vector space, any neigborhood of $0$ is absorbing.
+\begin{proof}
+  Let $U$ be a neigborhood of 0. 
+  $
+  \forall x \in X, \textnormal{ the map } \mathbb{R} \leftarrow X
+  \textnormal{ is continuous.}
+  $
+\end{proof}
+\end{property}
 
 \end{document}
