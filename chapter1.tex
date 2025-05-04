@@ -1,0 +1,184 @@
+\documentclass{article}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+
+\title{Introduction}
+\author{xuascaler}
+\date{\today}
+
+\newtheorem*{property}{Property}
+\newtheorem*{definition}{Definition}
+\newtheorem*{remark}{Remark}
+\newtheorem*{example}{Example}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{theorem}{Theorem}
+
+\begin{document}
+\maketitle
+
+\section*{What is Functional analysis? A brief introduction}
+Functional analysis is known as modern analysis or soft analysis.
+\begin{itemize}
+    \item In classical analysis (like mathmatical analysis, real analysis, complex analysis)
+    We mainly concern the quantitative properties of individual functions.
+    (e.g. the value, the integral, the derivative, estimate)
+    \item In functional analysis we study qualitative properties in space of functions.
+    We will treat functions as "points" in some sort of abstract space, e.g.
+    \[
+        L_2(\mathbb{R}) = \textnormal{the space of all square-integral functions on } \mathbb{R}
+    \]
+\end{itemize}
+Functional analysis is infinite dimensional linear algebra.
+\begin{itemize}
+    \item In (finite dimensional) linear algebra we study properties of $\mathbb{R}_n$ and 
+    linear maps from $\mathbb{R}_n$ to $\mathbb{R}_m$(or $\mathbb{C}_n$ to $\mathbb{C}_m$).
+    For example, one of the major theorems in linera algebra is
+    \begin{theorem}
+        Let $\mathcal{F}:\mathbb{R}_n \rightarrow \mathbb{R}_n$ be a linear map whose matrix is symmetric.
+        then we can find orthogonal set of vectors $\overrightarrow{v_{1}}, ......, \overrightarrow{v_{n}}$
+        and scalars $\lambda_1,......,\lambda_n$, so that $F\overrightarrow{v_i}=\lambda_{i}\overrightarrow{v_{i}}$
+        In particular, any vector $\overrightarrow{v} \in \mathbb{R}_{n}$ can be written as
+        $\overrightarrow{v} = \alpha_1\overrightarrow{v_1} + ...... + \alpha_n\overrightarrow{v_n}$
+        and we have 
+        $F\overrightarrow{v} = \alpha_1\lambda_1\overrightarrow{v_1} +......+\alpha_n\lambda_n\overrightarrow{v_n}$.
+    \end{theorem}
+    \item In (linear) functional analysis we study properties of infinite dimensional vector spaces,
+    and "linear maps" between them. For example,
+    \begin{enumerate}
+        \item $L^2(\mathbb{R}) \textnormal{ is a vector space: } f, g \in L_2(\mathbb{R}) \Rightarrow \lambda f + \mu g \in L_2(\mathbb{R})$
+        \item The map $\int : L^1(\mathbb{R}) \rightarrow \mathbb{R}, f \rightarrow \int_{\mathbb{R}}{|f(x)|}dx$ is a linear map.
+    \end{enumerate}
+    We will see how to extend the above theorem to infinite dimensional case.
+\end{itemize}
+Functional analysis was developed in early 20 centuries, 
+origined by problems in caculus of variation, 
+integral equations and quantum physics. 
+It was deeply influenced by the idea of axiomatization at that time.
+It has vast applications in PDE, probability, computational math, applied math and in mathmatical physics.
+Note: We mainly work on linear functional analysis.
+
+\section*{1 Infinite dimensional vector spaces}
+\begin{remark}
+    A vector space(over $\mathbb{R}$ or $\mathbb{C}$) V is a set, together with two operations:
+    \begin{itemize}
+        \item $+: V \times V \rightarrow V$
+        \item $\cdot:\mathbb{R}(\textnormal{or} \mathbb{C}) \times V \rightarrow V$
+    \end{itemize}
+    such that all the properties that we are familiar with hold, e.g.
+    \begin{itemize}
+        \item $x + y = y + x$
+        \item $(x + y) + z = x + (y + z)$
+        \item $x + 0 = x$
+        \item $x + (-x) = 0$
+        \item $\alpha(x + y) = \alpha x + \alpha y$
+        \item $(\alpha + \beta)x = \alpha x + \beta x$
+        \item $1 \cdot x = x$
+        \item $(\alpha \beta)x = \alpha(\beta x)$
+    \end{itemize}
+    A set of vectors ${u_1, ......, u_n}$ is called the basis of $V$ 
+    if every $x \in V$ can be written uniquely as 
+    $x = \alpha_1\mu_1 + ..... + \alpha_n\mu_n$
+    In this case we say $dimV = n$
+    If $V$ has no finite basis, tha we say $V$ is infinite dimensional.
+    \begin{example}
+        $\mathcal{P} = \textnormal{the set of all polynomials in variable } x$.
+        Easy to see:
+        \begin{itemize}
+            \item $\mathcal{P}$ is a vector space.
+            \item $\mathcal{P}$ has no finite basis.
+            \begin{proof}
+                If polynomials $p_1, ......, p_n$ is any set of polynomials. 
+                Let $N=max\{deg(p_1), ......, deg(p_n)\}$.
+                Then any polynomials of degree $N + 1$ is NOT a linear combination of $p_i$'s.
+                So ${p_1, ......, p_n}$ is NOT a basis of $\mathbb{P}$.
+                So $V$ is an infinite dimensional vector space.
+            \end{proof}
+        \end{itemize}
+    \end{example}
+    A Hamel basis for a vector space $V$ is a set of linearly independent vectors in $V$ so that every $x \in V$
+    can be wriiten uniquely as a finite linear combination of elements in this set.
+    \begin{example}
+        $\{1, x, x_2, ......, x_n\}$ is Hamel basis of $\mathcal{P}$ in previous example.
+    \end{example}
+    Every vector space admits a Hamel basis (by the axiom of choice).(see proof in appendix)
+    But for most interesting infinite demensional vector spaces, its Hamel basis has uncountable cardinality.
+    There are other conceptions of basis for infinitely dimensional vector spaces.
+    We will not study them in this course, except for Hilbert spaces.
+    \begin{example}
+        \begin{itemize}  \hfill
+            \item $C^{\infty}(\mathbb{R}), L^2(\mathbb{R}), C^{\infty}(\bigl[0, 1\bigr]), L^2(\bigl[0, 1\bigr])$ etc.
+            They all contain $\mathcal{P}$ in the previous example, with the exception $L^2(\mathbb{R})$.
+            But for any $p(x) \in \mathcal{P}, p(x)e^{-x^2} \in L^2(\mathbb{R})$.
+            \item $l_2 = \{x=(a_1, a_2, ......, a_n)\mid a_i \in \mathbb{R}, \sum_{i=1}^{\infty}a_i^2 < \infty\}$
+        \end{itemize}
+    \end{example}
+    As in the course linera algebra, one can define the conception of vector subspace and prove theorems like
+    "the intersectoin of vector subspace is a vector space".
+\end{remark}
+\section*{2 Metric structures on vector spaces}
+We would introduce distance between elements in an abstract vector space.
+\begin{definition}
+    A metric on a vector space $X$ is a real-valued function $d: X \times X \rightarrow \mathbb{R}$ so that
+    \begin{enumerate}
+        \item (positivity) $d(x, y)\ge0$ with equality iff $x=y$.
+        \item (symmetry) $d(x, y)=d(y, x)$
+        \item (triangle inequality) $d(x, y) \le d(x, z) + d(z, y)$
+    \end{enumerate}
+    \begin{remark}
+        One can define metric on any set.
+    \end{remark}
+    \begin{example}
+        $X=C(\bigl[0, 1\bigr])$, the space of all continuous functions on $\bigl[0, 1\bigr]$
+        \begin{itemize}
+            \item $d_0(f, g) = max_{0 \le x \le 1}|f(x) - g(x)|$ is a metric.
+            \item $d_1(f, g) = \bigl(\int_{0}^{1}{|f(x) - g(x)|^2}\bigr)^\frac{1}{2}$ is also a metric.
+        \end{itemize}
+    \end{example}
+\end{definition}
+In mathmatics, usually compatibale structures are more interesting.
+$\mathbb(Q)$: What are the metrics on $X$ that are compatibale with vector space operations?
+\begin{definition}
+    A metric on a vector space $X$ is called translation-invariant if 
+    $d(x + z, y + z) = d(x, y), \forall x, y, z \in X$.
+\end{definition}
+Obviously the distances in the above examples are translation-invariant, positive homogeneity.
+\begin{definition}
+    A metric on a vector space $X$ is called positively homogeneous if
+    $d(\alpha x, \alpha y) = |\alpha|d(x, y)$.
+\end{definition}
+Now suppose $X$ is a vector space and $d(\cdot, \cdot)$ is a metric compatibale 
+with $+$ and $\cdot$ i.e.
+\begin{itemize}
+    \item $d(x + z, y + z) = d(x, y)$
+    \item $d(\alpha x, \alpha y) = |\alpha|d(x, y)$
+\end{itemize}
+We define a function $\|\cdot\|:X \rightarrow \mathbb{R}$ by $\|x\|=d(x, 0)$.
+\begin{property}
+    The function $\|\cdot\|$ satisfies
+    \begin{itemize}
+        \item $\|x + y\| \le \|x\| + \|y\|$
+        \item $\|\alpha x\| = |\alpha|\|x\|$
+        \item $\|x\| \ge 0 if x \ne 0$
+    \end{itemize}
+    \begin{proof}
+        \begin{itemize}
+            \item $\|x + y\|=d(x+y, 0) \le d(x+y, y) + d(y, 0) = d(x, 0) + d(y, 0) = \|x\| + \|y\|$
+            \item $\|\alpha x\| = d(\alpha x, \alpha 0) = |\alpha|d(x, 0) = |\alpha|\|x\|$
+            \item if $x \ne 0$, then $\|x\|=d(x, 0) > 0$
+        \end{itemize}
+    \end{proof}
+\end{property}
+\begin{definition}
+    Let $X$ be a vector space. A function $\|\cdot\|: X \rightarrow \mathbb{R}$ is called a norm
+    if it satisfies the property, we call the pair $\bigl(X, \|\cdot\|\bigr)$ a normed vector space.
+\end{definition}
+\begin{property}
+If $(X, \|\cdot\|) is a normed vector space, then the function d(x, y):=\|x-y\|$
+defines a metric a $X$ which is compatibale with vector space structures.
+i.e. d satisfies (1), (2), (3), (a), (b).
+\begin{proof}
+    Exercise.
+\end{proof}
+\end{property}
+\textbf{normed vector space = vector space with a compatible metric.}
+\end{document}

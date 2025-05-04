@@ -82,10 +82,58 @@ In a topological vector space, any neigborhood of $0$ is absorbing.
 \begin{proof}
   Let $U$ be a neigborhood of 0. 
   $
-  \forall x \in X, \textnormal{ the map } \mathbb{R} \leftarrow X
-  \textnormal{ is continuous.}
+  \forall x \in X, \textnormal{ the map } \mathbb{C} \rightarrow X: 
+  \alpha \rightarrow \alpha x
+  \textnormal{ is continuous. since it is the composition }
+  \mathbb{R} \rightarrow \mathbb{R} \times X \rightarrow X: 
+  \alpha \rightarrow (\alpha, x) \rightarrow \alpha x 
+  \textnormal{ both of which are continuous. }
   $
+  \begin{remark}
+    $
+    \textnormal{The function } F: X \rightarrow Y 
+    \textnormal{ is continuous} \Leftrightarrow 
+    \forall     
+    $
+    $
+    Y' \subset Y, Y' \textnormal{ is open set }
+    $
+    the preimage of $Y'$ is open set. 
+  \end{remark}
+  So the pre-image of $U$ is an open set in $\mathbb{R}$, which obviously contains 0.
+  So $\exists \delta$ s.t. $\forall |\alpha| < \delta, \alpha x \in U.$
 \end{proof}
+\end{property}
+\begin{corollary}
+  For any neigborhood of $0, X = \cup_{k=1}^{\infty}(kU)$
+  \begin{proof}
+    $
+      \forall x \in X, \exists k, 
+      \frac{1}{k} < \delta, \frac{1}{k} x \in U \Rightarrow x \in kU.
+    $
+  \end{proof}
+\end{corollary}
+
+\begin{definition}
+  A set $E \subset X$ is symmetric if $E = -E$.
+\end{definition}
+\begin{property}
+  $\forall U, 0 \in U$, one can find a symmetric neigborhood $V$ of 0 s.t.
+  $V + V \subset U$.
+  \begin{proof}
+    Since $0 + 0 = 0$, and addition is continuous, 
+    for the neigborhood $U$ of $0$, one can find neigborhoods $U_1, U_2$
+    of $0$ s.t. $U_1 + U_2 \subset U$. 
+    Take $V = U_1 \cap U_2 \cap -U_1 \cap -U_2$. 
+    $V$ is symmetric and $0 \in V$. 
+    $V \subset U_1, V \subset U_2, V + V \subset U$.
+  \end{proof}
+  \begin{remark}
+    By iteration, one can find $V$ s.t. 
+    $V + V + V + V \subset U$
+  \end{remark}
 \end{property}
 
 \end{document}
+
+
