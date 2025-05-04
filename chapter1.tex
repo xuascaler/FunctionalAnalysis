@@ -1,6 +1,7 @@
 \documentclass{article}
 \usepackage{amsthm}
 \usepackage{amsfonts}
+\usepackage{enumitem}
 
 \title{Introduction}
 \author{xuascaler}
@@ -31,10 +32,10 @@ Functional analysis is known as modern analysis or soft analysis.
 Functional analysis is infinite dimensional linear algebra.
 \begin{itemize}
     \item In (finite dimensional) linear algebra we study properties of $\mathbb{R}_n$ and 
-    linear maps from $\mathbb{R}_n$ to $\mathbb{R}_m$(or $\mathbb{C}_n$ to $\mathbb{C}_m$).
+    linear maps from $\mathbb{R}^n$ to $\mathbb{R}^m$(or $\mathbb{C}^n$ to $\mathbb{C}^m$).
     For example, one of the major theorems in linera algebra is
     \begin{theorem}
-        Let $\mathcal{F}:\mathbb{R}_n \rightarrow \mathbb{R}_n$ be a linear map whose matrix is symmetric.
+        Let $\mathcal{F}:\mathbb{R}^n \rightarrow \mathbb{R}^n$ be a linear map whose matrix is symmetric.
         then we can find orthogonal set of vectors $\overrightarrow{v_{1}}, ......, \overrightarrow{v_{n}}$
         and scalars $\lambda_1,......,\lambda_n$, so that $F\overrightarrow{v_i}=\lambda_{i}\overrightarrow{v_{i}}$
         In particular, any vector $\overrightarrow{v} \in \mathbb{R}_{n}$ can be written as
@@ -62,7 +63,7 @@ Note: We mainly work on linear functional analysis.
     A vector space(over $\mathbb{R}$ or $\mathbb{C}$) V is a set, together with two operations:
     \begin{itemize}
         \item $+: V \times V \rightarrow V$
-        \item $\cdot:\mathbb{R}(\textnormal{or} \mathbb{C}) \times V \rightarrow V$
+        \item $\cdot:\mathbb{R}(\textnormal{or } \mathbb{C}) \times V \rightarrow V$
     \end{itemize}
     such that all the properties that we are familiar with hold, e.g.
     \begin{itemize}
@@ -147,20 +148,20 @@ Obviously the distances in the above examples are translation-invariant, positiv
     $d(\alpha x, \alpha y) = |\alpha|d(x, y)$.
 \end{definition}
 Now suppose $X$ is a vector space and $d(\cdot, \cdot)$ is a metric compatibale 
-with $+$ and $\cdot$ i.e.
-\begin{itemize}
+with $+$ and $\cdot$, i.e.
+\begin{enumerate}[label=\alph*)]
     \item $d(x + z, y + z) = d(x, y)$
     \item $d(\alpha x, \alpha y) = |\alpha|d(x, y)$
-\end{itemize}
+\end{enumerate}
 We define a function $\|\cdot\|:X \rightarrow \mathbb{R}$ by $\|x\|=d(x, 0)$.
 \begin{property}
     The function $\|\cdot\|$ satisfies
-    \begin{itemize}
+    \begin{enumerate}
         \item $\|x + y\| \le \|x\| + \|y\|$
         \item $\|\alpha x\| = |\alpha|\|x\|$
-        \item $\|x\| \ge 0 if x \ne 0$
-    \end{itemize}
-    \begin{proof}
+        \item $\|x\| > 0 \textnormal{ if } x \ne 0$
+    \end{enumerate}
+    \begin{proof} \hfill
         \begin{itemize}
             \item $\|x + y\|=d(x+y, 0) \le d(x+y, y) + d(y, 0) = d(x, 0) + d(y, 0) = \|x\| + \|y\|$
             \item $\|\alpha x\| = d(\alpha x, \alpha 0) = |\alpha|d(x, 0) = |\alpha|\|x\|$
@@ -170,10 +171,10 @@ We define a function $\|\cdot\|:X \rightarrow \mathbb{R}$ by $\|x\|=d(x, 0)$.
 \end{property}
 \begin{definition}
     Let $X$ be a vector space. A function $\|\cdot\|: X \rightarrow \mathbb{R}$ is called a norm
-    if it satisfies the property, we call the pair $\bigl(X, \|\cdot\|\bigr)$ a normed vector space.
+    if it satisfies the property (1), (2), (3), we call the pair $\bigl(X, \|\cdot\|\bigr)$ a normed vector space.
 \end{definition}
 \begin{property}
-If $(X, \|\cdot\|) is a normed vector space, then the function d(x, y):=\|x-y\|$
+If $(X, \|\cdot\|)$ is a normed vector space, then the function $d(x, y):=\|x-y\|$
 defines a metric a $X$ which is compatibale with vector space structures.
 i.e. d satisfies (1), (2), (3), (a), (b).
 \begin{proof}
