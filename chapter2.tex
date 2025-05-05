@@ -168,13 +168,61 @@ like to work on complete spaces. As in mathmatical analysis, we define
             \begin{remark}
                 $C([0, 1]) \subset L^1([0, 1])$ and we will see $(L^1, d_1)$ is complete.
             \end{remark}
+            In general, for any incomplete metric space $(X, d)$, it is possible to construct a complete metric space
+            $(\overline{X}, \overline{d})$ so that $X$ is dense(we will define this next time) in $\overline{X}$ and
+            $\overline{d}|_X = d$.
+            The procedure is the same as $\mathbb{Q} \rightarrow \mathbb{R}$.
+            See HW next time.
+            \item $X = l_1 = {\mathbf{x}=(a_1, a_2, ......)\mid\sum_{i=1}^{\infty}{|a_i| < \infty}}$.
+            $\|\mathbf{x}\| = \sum_{i=1}^{\infty}{|a_i|}$. Then $(X, \|\cdot\|)$ is a Banach space.
+            \begin{proof} \hfill
+                \begin{itemize}
+                    \item $X$ is a vector space because for 
+                    $\mathbf{x}=(a_1, a_2, a_3, ...), \mathbf{y}=(b_1, b_2, b_3, ...)$,
+                    \[
+                    x + y \in X: \sum_{i=1}^{\infty}{a_i + b_i} \le \sum_{i=1}^{\infty}{|a_i|} + \sum_{i=1}^{\infty}{|b_i|} < \infty
+                    \]
+                    \[
+                    \alpha x \in X: \sum_{i=1}^{\infty}{\alpha a_i} = |\alpha|\sum_{i=1}^{\infty}{|a_i| < \infty}
+                    \]
+                    The axioms hold in an obvious way.
+                    \item $\|\cdot\|$ is norm since
+                    \begin{itemize}
+                        \item $\|x + y\| \le \|x\| + \|y\|$
+                        \item $\|\alpha x\| = \alpha \|x\|$
+                        \item if $x \ne 0$, then $\exists a_i \ne 0$. So $\|x\| = \sum_{i=1}^{\infty}{|a_i|} > 0$
+                    \end{itemize}
+                    \item Completeness:
+                    Let $\mathbf{x}^j = (a_i^j)$ be a Cauchy sequence in $l^1$, i.e.
+                    $\forall \epsilon > 0, \exists N$ s.t. $\forall i, k \ge N, \|\mathbf{x}^j - \mathbf{x}^k\| = \sum_{l}|a_l^j - a_l^k| < \epsilon$.
+                    So $\forall l$ are fixed, $\forall j, k > N, |a_l^j - a_l^k| < \epsilon$
+                    \[
+                       \Rightarrow \forall l \textnormal{ are fixed }, \{a_l^j\} \textnormal{ is a Cauchy sequence in }\mathbb{R} 
+                    \]
+                    \[
+                        \Rightarrow \exists a_l^0 \in \mathbb{R} \textnormal{ s.t. } a_l^j \xrightarrow{j \rightarrow \infty} a_l^0.
+                    \]
+                    We want to show that $x_0=(a_l^0) \in l^1$, and $x^j \rightarrow x^0$ in $(X, d)$ with $d(x, y) = \|x -y\|, $
+                    To prove this, we choose $M$ large so that $\sum_{i=M}^{\infty}{|a_i^N|} < \epsilon$
+                    Then for $j > N$, we have
+                    \[
+                        \sum_{i=M}^{\infty}{|a_i^j|} \le \sum_{i=M}^{\infty}{|a_i^j - a_i^N| + \sum_{i=M}^{\infty}} < 2 * \epsilon
+                    \]
+                    letting $j \rightarrow \infty$, we get $\sum_{i=M}^{\infty}{a_i^0} < 2 \epsilon$. so $x^0 \in l^1$.
+                    Moreover, choose $j > N$ large enough, we can get
+                    \[
+                        \sum_{i=1}^{M-1}{|a_i^j - a_j^0|} < \epsilon,
+                        \sum_{i=M}^{\infty}{|a_i^j|} < 2\epsilon,
+                        \sum_{i=M}^{M-1}{|a_i^0|} < 2\epsilon
+                    \]
+                    \[
+                        \Rightarrow \sum_{1}^{\infty}{|a_i^j - a_i^0|} \le \sum_{i=1}^{M}{|a_i^j - a_i^0|} + \sum_{i=M}^{\infty}{a_i^0} < 5 \epsilon.
+                    \]
+                    So $x^j \rightarrow x^0$ in $(l^1, d)$.
+                \end{itemize}        
+            \end{proof}
         \end{enumerate}
     \end{example}
-    In general, for any incomplete metric space $(X, d)$, it is possible to construct a complete metric space
-    $(\overline{X}, \overline{d})$ so that $X$ is dense(we will define this next time) in $\overline{X}$ and
-    $\overline{d}|_X = d$.
-    The procedure is the same as $\mathbb{Q} \rightarrow \mathbb{R}$.
-    See HW next time.
 \end{definition}
 \end{document}
 
