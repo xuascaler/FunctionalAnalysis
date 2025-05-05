@@ -193,8 +193,8 @@ like to work on complete spaces. As in mathmatical analysis, we define
                         \item if $x \ne 0$, then $\exists a_i \ne 0$. So $\|x\| = \sum_{i=1}^{\infty}{|a_i|} > 0$
                     \end{itemize}
                     \item Completeness:
-                    Let $\mathbf{x}^j = (a_i^j)$ be a Cauchy sequence in $l^1$, i.e.
-                    $\forall \epsilon > 0, \exists N$ s.t. $\forall i, k \ge N, \|\mathbf{x}^j - \mathbf{x}^k\| = \sum_{l}|a_l^j - a_l^k| < \epsilon$.
+                    Let $x^j = (a_i^j)$ be a Cauchy sequence in $l^1$, i.e.
+                    $\forall \epsilon > 0, \exists N$ s.t. $\forall i, k \ge N, \|x^j - x^k\| = \sum_{l}|a_l^j - a_l^k| < \epsilon$.
                     So $\forall l$ are fixed, $\forall j, k > N, |a_l^j - a_l^k| < \epsilon$
                     \[
                        \Rightarrow \forall l \textnormal{ are fixed }, \{a_l^j\} \textnormal{ is a Cauchy sequence in }\mathbb{R} 
@@ -206,7 +206,7 @@ like to work on complete spaces. As in mathmatical analysis, we define
                     To prove this, we choose $M$ large so that $\sum_{i=M}^{\infty}{|a_i^N|} < \epsilon$
                     Then for $j > N$, we have
                     \[
-                        \sum_{i=M}^{\infty}{|a_i^j|} \le \sum_{i=M}^{\infty}{|a_i^j - a_i^N| + \sum_{i=M}^{\infty}} < 2 * \epsilon
+                        \sum_{i=M}^{\infty}{|a_i^j|} \le \sum_{i=M}^{\infty}{|a_i^j - a_i^N| + \sum_{i=M}^{\infty}} < 2 \epsilon
                     \]
                     letting $j \rightarrow \infty$, we get $\sum_{i=M}^{\infty}{a_i^0} < 2 \epsilon$. so $x^0 \in l^1$.
                     Moreover, choose $j > N$ large enough, we can get
