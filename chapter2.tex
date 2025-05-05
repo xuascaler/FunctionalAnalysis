@@ -1,0 +1,181 @@
+\documentclass{article}
+\usepackage{amsmath, amsthm}
+\usepackage{amsfonts}
+\usepackage{enumitem}
+
+\title{Complete metric spaces}
+\author{xuascaler}
+\date{\today}
+
+\newtheorem*{property}{Property}
+\newtheorem*{definition}{Definition}
+\newtheorem*{remark}{Remark}
+\newtheorem*{example}{Example}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{theorem}{Theorem}
+
+\begin{document}
+\maketitle
+\section*{1 Convergence}
+Let $(X, d)$ be a metric space(not necessary to be a vector space).
+\begin{definition}
+    We say that a sequence of vectors, $\{x_1, x_2, ....., x_n\}$, in $X$ converges to $x_0 \in X$
+    (under the metric d)
+    if $\forall \epsilon > 0, \exists N > 0$ s.t. $\forall i > N, d(x_i, x_o)<\epsilon$
+    We will introduce Convergence in more general spaces later.
+    \begin{example}
+        $X=C(\bigl[0, 1\bigr])$
+        \begin{enumerate}
+            \item $d_1(f, g) = \int_{0}^{1}{|f(x) - g(x)|dx}$ \\
+            Let $f_n(x) = x_n, f_0(x)=0$. 
+            Then $d_1(f_n, f_0) = \int_{0}^{1}{x_n}dx = \frac{1}{n+1} \rightarrow 0 \textnormal{ as } n \rightarrow \infty$. \\
+            so $f_n \rightarrow f_0$ in $(X, d_1)$
+            \item $d_0(f, g) = \max_{0 \le x \le 1}|f(x) - g(x)|$
+            Still take $f_n(x) = x_n, f_0(x) = 0$, Then
+            $d_0(f_n, f_0) = \sup_{0 \le x \le 1}{x_n} = 1$,
+            so $f_n \not\rightarrow f_0$ in $(X, d_0)$.
+            \begin{remark}
+                Obvious one always have $d_1(f, g) \le d_0(f, g) in X$
+                We say the metric $d_0$ is stronger than $d_1$. If a sequence converges to an 
+                element in $d_0$, then it converges to that element in $d_1$.
+            \end{remark}
+            \item Still take $d_1(f,g) = \int_{0}^{1}{|f(x)-g(x)|dx}$. 
+            \[
+                f_n(x) = 
+                \begin{cases}
+                    0, & x < \frac{1}{2} - \frac{1}{n}, \\
+                    \frac{1}{2} + \frac{n}{2}(x - \frac{1}{2}), & \frac{1}{2} - \frac{1}{n} \le x \le \frac{1}{2} + \frac{1}{n}, \\
+                    1, & x > \frac{1}{2} + \frac{1}{n}
+                \end{cases}
+            \]
+            and let \[
+                \begin{cases}
+                    0, & x \le \frac{1}{2}, \\
+                    1, & x \ge \frac{1}{2}
+                \end{cases}
+            \] 
+            Then $d_1(f_n, f_0) = \int_{0}^{1}{|f_n(x) - f_0(x)|dx} = \frac{1}{2n} \rightarrow 0$.
+        \end{enumerate}
+    \end{example}
+\end{definition}
+\begin{property}
+Suppose a sequence $\{x_n\}$ converges in $(X, d)$, then
+\begin{enumerate}
+    \item $\{x_n\}$ is bounded.
+    \item the limit is unique.
+\end{enumerate}
+\begin{proof} \hfill
+    \begin{enumerate}
+        \item Suppose $x_n \rightarrow x_0$, then for $\epsilon = 1, \exists N$, 
+        s.t. $\forall i > N$, $d(x_n, x_0) < 1$.
+        Let $C = max(d(x_n, x1), d(x_n, x_1),......,d(x_n, x_0)) + 1$,
+        Then $d(x_n, x_0) < C \forall 1 \le i < \infty$
+        So $\{x_i\}$ is bounded.
+        \item Suppose $x_i \rightarrow x_0$ and $x_i \rightarrow x_0'$.
+        $\forall \epsilon > 0, \exists N, N'$ s.t.
+        $\forall i > N, d(x_i, x_0) < \epsilon, \forall i' > N, d(x_i', x_0') < \epsilon \Rightarrow$
+        $d(x_0, x_0') \le d(x_0, x_i) + d(x_i, x_0') \le 2\epsilon \Leftrightarrow d(x_0, x_0') = 0$
+        $\Rightarrow x_0 = x_0'$
+    \end{enumerate}
+\end{proof}
+\end{property}
+\section*{2 Completeness}
+As we have seen in part 3 of previous example, we have a sequence in $X$ which converges under $d_1$ to
+, an element outside $X$. So as $\mathcal{Q}, (X, d)$ is NOT complete. To do better analysis, we would 
+like to work on complete spaces. As in mathmatical analysis, we define
+\begin{definition}
+    A sequence $\{x_i\}$ in $(X, d)$ is a Cauchy sequence if $\forall \epsilon > 0, \exists N > 0$
+    s.t. $\forall i, j > N$, $d(x_i, x_j) < \epsilon$
+\end{definition}
+\begin{definition}
+    A metric space $(X, d)$ is complete if any Cauchy sequence in $(X,d)$ converges to an element in $X$.
+\end{definition}
+\begin{definition}
+    A complete normed vector space is called a Banach space.
+    \begin{itemize}
+        \item Here, the metric is the induced metric from the norm: $d(x, y) = \|x - y\|$
+        \item Banach space will be one of the main object in this course.
+    \end{itemize}
+    \begin{example}
+        $d(x, y) = (\sum_{i=1}^{n}{(x_i-y_i)})^\frac{1}{2}$ is a complete metric on $\mathbb{R}^n$.\\
+        $\|x\|=(\sum_{i=1}^{n}{x_i^2})^\frac{1}{2}$, $(\mathbb{R}^n, \|\cdot\|)$ is a Banach space.
+    \end{example}
+    \begin{example}
+        $X=C(\bigl[0, 1\bigr])$.
+        \begin{enumerate}
+            \item $d_1(f, g) = \int_{0}^{1}{|f(x) - g(x)|dx}$.
+            We have seen $f_n(x) = x^n \rightarrow f_0(x) = 0$.
+            In fact, $\{f_n\}$ is a Cauchy sequence, since
+            $d(f_n, f_m) = \int_{0}^{1}|x^n - x^m|dx < \int_{0}^{1}{x^ndx} + \int_{0}^{1}{x^mdx}=\frac{1}{n+1} + \frac{1}{m+1}$
+            In general, we have
+            \begin{property}
+                Any converged sequence in a metric space is a Cauchy sequence.
+                \begin{proof}
+                    Suppose $x_i \rightarrow x_0$. i.e. $\forall \epsilon > 0, \exists N$ s.t.
+                    $\forall i > N, d(x_i, x_0) < \epsilon$.
+                    So for $\forall i, j > N$, we have
+                    $d(x_i, x_j) \le d(x_i, x_0) + d(x_0, x_j) < 2\epsilon$.
+                    So $\{x_i\}$ is Cauchy.
+                \end{proof}
+            \end{property}
+            \item $d_0(f, g) = \max_{0 \le x \le 1}{|f(x) - g(x)|dx}$.\\
+            We have seen $f_n \not\rightarrow f_0$ in $(X, d_0)$.
+            In fact, $\{f_n\}$ is not a Cauchy sequence since we fix $n$ and let $m \rightarrow \infty$,
+            $d(f_n, f_m) = \max_{0 \le x \le 1}{|x_n - x_m|dx} \rightarrow 1$.
+            In fact, we have 
+            \begin{property}
+                $(C(\bigl[0, 1\bigr]), d_0)$ is complete. As a consequence, \\
+                $\|f\|_0=\sup_{0 \le x \le 1}{|f(x)|}, (C(\bigl[0, 1\bigr]), \|f_0\|)$ is a Banach space.
+                \begin{proof}
+                    Let $\{f_n\}$ be a Cauchy sequence, $\forall \epsilon > 0, \exists N > 0$, s.t.
+                    $d_0(f_n, f_m) = \sup_{0 \le x \le 1}|f_n(x) - f_m(x)| < \epsilon$.
+                    Then for any fixed $x \in [0, 1]$, the sequence (of scalars) $\{f_n(x)\}$ is a Cauchy sequence in R.
+                    It follows that there exists $f_0(x)$ s.t. $f_n(x) \rightarrow f_0(x)$(use Completeness of $\mathbb{R}$).
+                    Since $|f_n(x) - f_m(x)| < \epsilon$. letting $m \rightarrow \infty$ we get
+                    $|f_n(x) - f_0(x)| \le \epsilon, \forall n > N, \forall x \in X$.
+                    So the sequence of functions $\{f_n(x)\}$ converges uniformly to $f_0(x)$, 
+                    because $\forall x \in X$.
+                    By results in mathmatical analysis, $f_0$ is continuous and 
+                    $f_n \rightarrow f_0(\sup_{0 \le x \le 1}{|f_n(x) - f_0(x)|} < \epsilon, \forall n > N)$ 
+                    in $(C([0, 1]), d_0)$
+                    (Finally, since each \(f_n\) is continuous and the uniform limit of continuous functions is continuous, 
+                    \(f\in C([0,1])\).
+                    We have thus found a limit \(f\in C([0,1])\) of the Cauchy sequence \(\{f_n\}\) in the metric \(d_0\).  
+                    This shows \((C([0,1]),d_0)\) is complete. See the proof in appendix)
+                \end{proof}
+            \end{property}
+            \item \[
+                d_1(f, g) = \int_{0}^{1}{|f(x) - g(x)|dx}
+            \]
+            \[
+                f_n(x) = 
+                \begin{cases}
+                    0, & x < \frac{1}{2} - \frac{1}{n}, \\
+                    \frac{1}{2} + \frac{n}{2}(x - \frac{1}{2}), & \frac{1}{2} - \frac{1}{n} \le x \le \frac{1}{2} + \frac{1}{n} \\
+                    1, & x > \frac{1}{2} + \frac{1}{n}
+                \end{cases}
+            \]
+            \[
+                f_0(x) =
+                    \begin{cases}
+                        0, & x \le \frac{1}{2} \\
+                        1, & x \ge \frac{1}{2}
+                    \end{cases}
+            \] 
+            $f_n$ is actually a Cauchy sequence in $(X, d_1)$, since \\
+            $d_1(f_n, f_m) \le d_1(f_n, f_0) + d_1(f_0, f_m) \le \frac{1}{2n} + \frac{1}{2m}$.
+            Conclusion: $(C([0, 1]), d_1)$ is NOT complete.
+            \begin{remark}
+                $C([0, 1]) \subset L^1([0, 1])$ and we will see $(L^1, d_1)$ is complete.
+            \end{remark}
+        \end{enumerate}
+    \end{example}
+    In general, for any incomplete metric space $(X, d)$, it is possible to construct a complete metric space
+    $(\overline{X}, \overline{d})$ so that $X$ is dense(we will define this next time) in $\overline{X}$ and
+    $\overline{d}|_X = d$.
+    The procedure is the same as $\mathbb{Q} \rightarrow \mathbb{R}$.
+    See HW next time.
+\end{definition}
+\end{document}
+
+
