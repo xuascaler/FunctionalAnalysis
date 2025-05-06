@@ -1,0 +1,53 @@
+\documentclass{article}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{enumitem}
+
+\title{The Baire category theorem}
+\author{xuascaler}
+\date{\today}
+
+\newtheorem*{property}{Property}
+\newtheorem*{definition}{Definition}
+\newtheorem*{remark}{Remark}
+\newtheorem*{example}{Example}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{theorem}{Theorem}
+
+\begin{document}
+\maketitle
+
+\section*{Metric Topology}
+Let $(X, d)$ be a metric space, and $A \subset X$ a subset.
+\begin{definition}
+    \begin{enumerate} \hfill
+        \item A point $x \in A$ is called an interior point of $A$ if $\exists \epsilon > 0$ s.t.
+        $B(x, \epsilon) = \{y \in X \mid d(y, x) < \epsilon\}$ lies in $A$.($\epsilon \textnormal{-neigborhood of x}$).
+        \item $A$ is open if any point $x \in A$ is an interior point of $A$.
+    \end{enumerate}
+    \begin{example}
+        For any $x \in X$ and any $r > 0$, $B(x, r)$ is open.
+        \begin{proof}
+            For any $y \in B(x, r)$, we have $d(x, y) < r$. Take any $0 < \epsilon < r - d(x, y)$.
+            Then for any $z \in B(y, \epsilon)$,
+            $d(z, x) \le d(z, y) + d(y, x) < \epsilon + d(x, y) < r$.
+        \end{proof}
+    \end{example}
+    \begin{property}
+        \begin{enumerate} \hfill
+            \item $\emptyset, X$ are open sets.
+            \item If $\{A_\alpha\}$ are a collection (could be infinite, or even incountable) of open sets in $X$,
+            so is $\cup_\alpha A_\alpha$
+            \item If $A, B$ are open sets in $X$, so is $A \cap B$.(If $A_1, A_2, ..., A_n$ are open, so is $\cap_{i=1}{n}A_i$)
+        \end{enumerate}
+        \begin{proof} \hfill
+            \begin{enumerate}
+                \item Obvious.
+                \item Suppose $x \in \cup_\alpha A_\alpha$, then $\exists \alpha, x \in A_\alpha$. Since $A_\alpha$ is open,
+                $\exists \epsilon > 0, B(x, \epsilon) \subset A_\alpha$. It follows $B(x, \epsilon) \subset \cup_\alpha A_\alpha$.
+                So $\cup_\alpha A_\alpha$ is open.
+            \end{enumerate}
+        \end{proof}
+    \end{property}
+\end{definition}
+\end{document}
