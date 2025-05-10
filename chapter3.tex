@@ -19,8 +19,8 @@
 
 \section*{Metric Topology}
 Let $(X, d)$ be a metric space, and $A \subset X$ a subset.
-\begin{definition}
-    \begin{enumerate} \hfill
+\begin{definition} \hfill
+    \begin{enumerate}
         \item A point $x \in A$ is called an interior point of $A$ if $\exists \epsilon > 0$ s.t.
         $B(x, \epsilon) = \{y \in X \mid d(y, x) < \epsilon\}$ lies in $A$.($\epsilon \textnormal{-neigborhood of x}$).
         \item $A$ is open if any point $x \in A$ is an interior point of $A$.
@@ -33,8 +33,8 @@ Let $(X, d)$ be a metric space, and $A \subset X$ a subset.
             $d(z, x) \le d(z, y) + d(y, x) < \epsilon + d(x, y) < r$.
         \end{proof}
     \end{example}
-    \begin{property}
-        \begin{enumerate} \hfill
+    \begin{property} \hfill
+        \begin{enumerate} 
             \item $\emptyset, X$ are open sets.
             \item If $\{A_\alpha\}$ are a collection (could be infinite, or even incountable) of open sets in $X$,
             so is $\cup_\alpha A_\alpha$
@@ -46,7 +46,100 @@ Let $(X, d)$ be a metric space, and $A \subset X$ a subset.
                 \item Suppose $x \in \cup_\alpha A_\alpha$, then $\exists \alpha, x \in A_\alpha$. Since $A_\alpha$ is open,
                 $\exists \epsilon > 0, B(x, \epsilon) \subset A_\alpha$. It follows $B(x, \epsilon) \subset \cup_\alpha A_\alpha$.
                 So $\cup_\alpha A_\alpha$ is open.
+                \item Suppose $x \in A \cap B$, 
+                then $\exists \epsilon1, \epsilon2$ s.t. $B(x, \epsilon1) \subset A, B(x, \epsilon2) \subset B$.
+                Take $\epsilon = \min{\epsilon1, \epsilon2}$, Then $B(x, \epsilon) \subset A \cap B$.
+                So $A \cap B$ is open.
+                \begin{remark}
+                    It could happen that the intersection of countable open sets is no longer open.
+                    The simplest example is $A_n = (-\frac{1}{n}, \frac{1}{n} + 1)$, $\cap_{n=1}^{\infty}{A_N}$ is not open.
+                \end{remark}
             \end{enumerate}
+        \end{proof}
+    \end{property}
+\end{definition}
+One can characterize convergence using open sets.
+\begin{property}
+    $\lim\limits_{i \rightarrow \infty}{x_i}=x_0$ if and only if for any open set $A$ containing $x_0$, 
+    there exists $N$ s.t. $\forall i > N, x_i \in A$
+    \begin{proof} \hfill
+        \begin{itemize}
+            \item Suppose $x_i \rightarrow x_0$ and $A$ is an open set containing $x_0$.
+            Then $\exists \epsilon$ s.t. $\forall i > N, B(x_i, \epsilon) \subset A  \Rightarrow x_i \in B(x_0, \epsilon) \forall i > N$.
+            So $\forall i > N, x_i \in A$.
+            \item Suppose for any open set $A$ containing $x_0$, we can find $N$ s.t. $x_i \in A \forall i > N$,
+            Then in particular $\forall \epsilon > 0, A = B(x_0, \epsilon) \forall i > N$,
+            In other words, $\forall i > N, d(x_i, x_0) < \epsilon.$.
+            So $x_i \rightarrow x_0$.
+        \end{itemize}
+    \end{proof}
+\end{property}
+\begin{definition}
+    A subset $A \subset X$ is closed if $X \backslash A$ is open.
+\end{definition}
+One can easily convert properties of open sets to properties of closed sets.
+\begin{example}
+    For any $x \in A$ and any $r > 0$, $\overline{B}(x, r) = \{y \in X \mid d(y, x) \le r\}$ is closed.
+    \begin{proof}
+        % By the triangle inequalities, one can show as before that
+        % $X \backslash \overline{B}(x, r) = \{y \in X \mid d(y, x) > r\}$ is open.
+        we prove the set $X \backslash \overline{B}(x, r)$ is open.
+        \[
+            X \backslash \overline{B}(x, r) = \{y \in X \mid d(y, x) > r\}
+        \]
+        We claim that $\forall y \in X \backslash \overline{B}, \exists \epsilon > 0, B(y, \epsilon) \subset X \backslash \overline{B}$.
+        We set $\epsilon = d(y, x) - r$.
+        $\forall z \in B(y, \epsilon), d(x, z) + d(z, y) \ge d(x, y) \Leftrightarrow d(x, z) > d(x, y) - d(z, y) > d(x, y) - \epsilon = r$.
+        So $d(x, z) > r, B(y, \epsilon) \subset X \backslash \overleftarrow{B}$,
+        $X \backslash \overline{B}$ is open set.
+    \end{proof}
+\end{example}
+A characterization of closed sets.
+\begin{property}
+    $A$ is closed iff for any sequence $x_n \in A, x_n \rightarrow x \in X, x \in A$.
+    \begin{proof} \hfill
+        \begin{itemize}
+            \item Suppose $A$ is closed. $x_n \in A, x_n \rightarrow x \in X$. We want to show $x \in A$. 
+            By contradiction: If $x \in X \backslash A$, one can find $\epsilon > 0$ s.t. $B(x, \epsilon) \subset X \backslash A$.
+            i.e. $B(x, \epsilon) \cap A = \emptyset$.
+            But $x_n \rightarrow x \Rightarrow \exists N s.t. \forall n > N, x_n \in B(x, \epsilon)$.
+            So $\forall n > N, x_n \notin A$. Contradiction!
+            \item Suppose for any sequence $x_n \in A, x_n \rightarrow x \in X, x \in A$.
+            We want to show $A$ is closed. $\Leftrightarrow$ we want to show $X \backslash A$ is open.
+            $\Leftrightarrow$ for any $y \in X \backslash A$, 
+            want to show $\exists \epsilon > 0, B(y, \epsilon) \subset X \backslash A \Leftrightarrow B(y, \epsilon) \cap A = \emptyset$
+            Again by contradiction, suppose $\forall \epsilon > 0, B(y, \epsilon) \cap A \ne \emptyset$.
+            Then choose $x_n \in B(y, \frac{1}{n}) \cap A$. Then $x_n \in A$ and $x_n \rightarrow y$. 
+            so $y \in A$, contradicts with the fact $y \in X \backslash A$.
+        \end{itemize}
+    \end{proof}
+\end{property}
+\begin{definition}
+    For any $A \subset X$, we define its closure to be the set 
+    $\overline{A} = \{x \in X \mid \exists x_n \in A, x_n \rightarrow x\}$.
+    \begin{example} \hfill
+        \begin{itemize}
+            \item $\mathbb{Q} \subset \mathbb{R}, \overline{\mathbb{Q}} = \mathbb{R}$.
+            Since any real number is the limit of a sequence of rationals.
+            \item $P([0, 1]) = \textnormal{ polynomials for } x \in [0, 1]$.
+            The $P([0, 1]) \subset C([0, 1])$.
+            In mathmatical analysis we learned that any continuous function is approximated uniformly by polynomials(e.g. Bernstain Polynomials),
+            So if we use $d_0$ metric, the $\overline{P[0, 1]}=C([0,1])$.
+        \end{itemize}
+    \end{example}
+    \begin{property}
+        $\overline{A}$ is closed.
+        \begin{proof}
+            Suppose $x_i \in \overline{A}, x_n \rightarrow x \in X$. We want to show $x \in \overline{A}$.
+            For any $n$, we choose $x_n \in \overline{A}$ s.t. $d(x_N, x) < \frac{1}{n}$.
+            Since $x_N \in \overline{A}$, we can find an element in $A$,
+            which we denoted by $y_n$, s.t. $d(y_n, x_N) < \frac{1}{n}$.
+            Then $y_n \in A$ and $d(y_n, x) < d(y_n, x_N) + d(x_N, x) < \frac{2}{n}$.
+            So $y_n \rightarrow x$, i.e. $x \in \overline{A}$.
+            \begin{remark}
+                If $B$ is closed, $A \subset B$, then $\overline{A} \subset B$.
+                As a consequence, $\overline{A}$ is the smallest closed subset of $X$ which contains $A$.
+            \end{remark}
         \end{proof}
     \end{property}
 \end{definition}
