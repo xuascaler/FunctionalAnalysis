@@ -100,14 +100,14 @@ A characterization of closed sets.
     \begin{proof} \hfill
         \begin{itemize}
             \item Suppose $A$ is closed. $x_n \in A, x_n \rightarrow x \in X$. We want to show $x \in A$. 
-            By contradiction: If $x \in X \backslash A$, one can find $\epsilon > 0$ s.t. $B(x, \epsilon) \subset X \backslash A$.
+            By contradiction: If $x \in X \backslash A$, one can find $\epsilon > 0, B(x, \epsilon) \subset X \backslash A$.
             i.e. $B(x, \epsilon) \cap A = \emptyset$.
-            But $x_n \rightarrow x \Rightarrow \exists N s.t. \forall n > N, x_n \in B(x, \epsilon)$.
+            But $x_n \rightarrow x \Rightarrow \exists N, \forall n > N, x_n \in B(x, \epsilon)$.
             So $\forall n > N, x_n \notin A$. Contradiction!
             \item Suppose for any sequence $x_n \in A, x_n \rightarrow x \in X, x \in A$.
-            We want to show $A$ is closed. $\Leftrightarrow$ we want to show $X \backslash A$ is open.
-            $\Leftrightarrow$ for any $y \in X \backslash A$, 
-            want to show $\exists \epsilon > 0, B(y, \epsilon) \subset X \backslash A \Leftrightarrow B(y, \epsilon) \cap A = \emptyset$
+            We want to show $A$ is closed $\Leftrightarrow$ we want to show $X \backslash A$ is open.
+            $\Leftrightarrow$ we want to show $\forall y \in X \backslash A$, 
+            $\exists \epsilon > 0, B(y, \epsilon) \subset X \backslash A \Leftrightarrow B(y, \epsilon) \cap A = \emptyset$.
             Again by contradiction, suppose $\forall \epsilon > 0, B(y, \epsilon) \cap A \ne \emptyset$.
             Then choose $x_n \in B(y, \frac{1}{n}) \cap A$. Then $x_n \in A$ and $x_n \rightarrow y$. 
             so $y \in A$, contradicts with the fact $y \in X \backslash A$.
@@ -130,7 +130,7 @@ A characterization of closed sets.
     \begin{property}
         $\overline{A}$ is closed.
         \begin{proof}
-            Suppose $x_i \in \overline{A}, x_n \rightarrow x \in X$. We want to show $x \in \overline{A}$.
+            Suppose $x_n \in \overline{A}, x_n \rightarrow x \in X$. We want to show $x \in \overline{A}$.
             For any $n$, we choose $x_n \in \overline{A}$ s.t. $d(x_N, x) < \frac{1}{n}$.
             Since $x_N \in \overline{A}$, we can find an element in $A$,
             which we denoted by $y_n$, s.t. $d(y_n, x_N) < \frac{1}{n}$.
@@ -143,4 +143,105 @@ A characterization of closed sets.
         \end{proof}
     \end{property}
 \end{definition}
+\section*{2. The Baire category theorem}
+\begin{definition}
+    A subset $A \subset (X, d)$ is dense if $\overline{A} = X$.
+    Equivalently, $\forall x \in X, \exists x_n \in A$ s.t. $x_n \rightarrow x$.
+    \begin{example} \hfill
+        \begin{itemize}
+            \item $\mathbb{Q}$ is dense in $\mathbb{R}$, $\mathbb{R} \backslash \mathbb{Q}$ is also dense in $\mathbb{R}$.
+            \item $P([0, 1])$ is also dense in $C([0, 1])$.
+        \end{itemize}
+    \end{example}
+    \begin{property}
+        $A \subset X$ is dense iff for any nonempty open subset $B \subset X$, $A \cap B \ne \emptyset$.
+        \begin{proof} \hfill
+            \begin{itemize}
+                \item Suppose $A$ is dense, and $B \ne \emptyset$ is open.
+                We choose $x \in B, \exists \epsilon > 0, B(x, \epsilon) \subset B$.
+                Since $A$ is dense, one can find $\{y_n\}$ s.t. $y_n \rightarrow x$.
+                So $\exists y \in A, d(y, x) < \epsilon \Leftrightarrow y \in A \cap B(x, \epsilon) \Leftrightarrow y \in A \cap (B, \epsilon)$.
+                So $y \in A \cap B \Rightarrow A \cap B \ne \emptyset$.
+                \item Suppose for any $B \ne \emptyset$ open, we have $A \cap B \ne \emptyset$.
+                Then $\forall x \in X$, we can find $x_n \in B(x, \frac{1}{n})\cap A$.
+                We get a sequence $\{x_n\} \in A, x_n \rightarrow x$. So $X = \overline{A}$, $A$ is dense. 
+            \end{itemize}
+        \end{proof}
+    \end{property}
+\end{definition}
+\begin{definition}
+    A subset $A \subset (X, d)$ is nowhere dense $\overline{A}$ contains no interior point.
+    \begin{example} \hfill
+        \begin{itemize}
+            \item $\mathbb{Z}$ is no where dense in $\mathbb{R}$.
+            \item The Cantor set is nowhere dense in $\mathbb{R}$
+            \item $A=\{f \in C([0, 1]) \mid f(0) = 0\}$ is nowhere dense in $C([0, 1])$.
+        \end{itemize}
+    \end{example}
+\end{definition}
+\begin{definition}
+    A subset $A \subset X$ is of first category if it is the union of countably many nowhere dense subsets.
+    A subset $A \subset X$ is of second category if it is not of first cagtegory.
+    \begin{example} \hfill
+        \begin{itemize}
+            \item $\mathbb{Q}$ is of first category.
+            \item By the next theorem and it's corollary, $\mathbb{R} \backslash \mathbb{Q}$ is $2^{nd}$ category.
+        \end{itemize}
+    \end{example}
+\end{definition}
+\begin{theorem}
+    Let $(X, d)$ be a complete metric space. Then the intersection of any countable collection of dense open subsets of $X$
+    is still dense in $X$, but not necessary open.
+    \begin{proof}
+        Let $A_1, A_2, ..., A_n$ be a sequence of dense open subsets of $X$.
+        Take any nonempty open set  $B \subset X$, we want to show $(\cap_{i=1}^\infty A_i) \cap B \ne \emptyset$.
+        \begin{itemize}
+            \item $A_1 \subset X$ is dense open, we see $A_1 \cap B \ne \emptyset$ and $A_1 \cap B$ is open.
+            So in particular, we can find $x_1 \in X, r_1 > 0, \overline{B(x_1, y_1)} \subset A_1 \cap B$. 
+            \item We continue by induction.
+            Suppose we have chosen $x_{n-1}, r_{n-1}$ s.t.
+            \[
+                \overline{B(x_{n-1}, r_{n-1})} \subset A_{n-1} \cap B(x_{n-2}, r_{n-2})
+            \]
+            Since $A_n$ is dense open, $A_n \cap B(x_{n-1}, y_{n-1})$ is non-empty and open.
+            So one can find $x_n \in X$, $r_n > 0$ s.t.
+            \[
+                \overline{B(x_n, r_n)} \subset A_n \cap B(x_{n-1}, r_{n-1})
+            \]
+            Note that we can always take $r_n < \frac{1}{n}$.
+            \item We claim that $\{x_n\}$ is a Cauchy sequence. In fact, $\forall N$ and
+            $n, m > N$, $B(x_n, y_n) \subset B(x_N, y_N)$ and $B(x_m, y_m) \subset B(x_N, y_N)$.
+            In particular, $x_n, x_m \in B(x_N, y_N)$.
+            So $d(x_n, x_m) \le d(x_n, x_N) + d(x_N, x_m) < 2r_N < \frac{2}{N}$,
+            So $\{x_n\}$ is Cauchy.
+            \item By completeness, we can find $x_0 \in X$ s.t. $x_n \rightarrow x_0$.
+            Since $\overline{B(x_n, y_n)} \subset B(x_{n-1}, r_{n-1})$, we have 
+            \[
+                x_0 \in \overline{B(x_n, r_n)} \subset A_n \cap B(x_{n-1}, r_{n-1}) \subset ... \subset A_n \cap B.
+            \]
+            It follows that $x_0 \in \cap_{n=1}^{\infty}{(A_n \cap B)} = (\cap_{n=1}^{\infty}{A_n}) \cap B$.
+            So $(\cap_{n=1}^{\infty}A_n) \cap B \ne \emptyset$.
+        \end{itemize}
+    \end{proof}
+    \begin{corollary}
+        Any complete metric space is of $2^nd$ category.
+        \begin{proof}
+            Assume $X$ is of $1^nd$ category which means $X=\cap_{i=1}^{\infty}$ where $A_i$ is nowhere dense.
+            Then $X=\cap_{i=1}^{\infty}\overline{A_i}$, and thus 
+            \[
+                \cap_{i=1}^{\infty}{X \backslash \overline{A_i}} = X \backslash \overline{A_0} 
+                                                                     \backslash \overline{A_1} 
+                                                                     \backslash ...
+                                                                     \backslash \overline{A_n} = \emptyset
+            \]
+            Each $X \backslash \overline{A_i}$ is open because $\overline{A_i}$ is closed.
+            Each $X \backslash \overline{A_i}$ is dense because for all open set $B$, 
+            if $B \cap (X \backslash \overline{A_i}) = \emptyset$, then $B \subset \overline{A_i}$,
+            $\overline{A_i}$ has no interior point, $B \subset \overline{A_i}$ can never happen.
+            So $B \cap (X \backslash \overline{A_i}) \ne \emptyset$, $X \backslash \overline{A_i}$ is dense.
+            By the previous theorem, $\cap_{i=1}^{\infty}{(X \backslash \overline{A_i})}$ is dense, and thus not $\emptyset$.
+            Contradiction!
+        \end{proof}
+    \end{corollary}
+\end{theorem}
 \end{document}
