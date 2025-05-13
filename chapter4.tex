@@ -1,0 +1,43 @@
+\documentclass{article}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{enumitem}
+
+\title{Topology vector spaces}
+\author{xuascaler}
+\date{\today}
+
+\newtheorem*{property}{Property}
+\newtheorem*{definition}{Definition}
+\newtheorem*{remark}{Remark}
+\newtheorem*{example}{Example}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{theorem}{Theorem}
+
+\begin{document}
+\maketitle
+
+\section*{1. Topology spaces}
+We have seen many important example of Banach spaces, 
+or more generally examples of vector spaces with a metric structure.
+However, there are also examples of important spaces 
+whose natural structure does not follow from a complete metric.
+\begin{example}
+    $X = C_0^0(\mathbb{R}) = \{ \textnormal{compactly supported continuous function on } \mathbb{R}\}$
+    If we let
+    \[
+        X_n = C_0^0(\bigl[-n, n \bigr]) = \{f \in C_0^0(\mathbb{R}): supp(f) \subset \bigl[ -n, n\bigr]\},
+    \]
+    \[
+        supp(f)=\overline{\{x \mid f(x) \ne 0\}}
+    \]
+    \begin{itemize}
+        \item $X = \cap_{n=1}^{\infty}{X_n}$
+        \item $X_n \subset C^0(\bigl[-n, n\bigr])$ is closed.(Banach space)
+        \item $X_n$ is nowhere dense in $C^0(-n, n)$(and in $C^0(\bigl[-m,m\bigr])$ for $m \ge n$).
+    \end{itemize}
+    Of course any reasonable structure in 
+    $C_0^0(\mathbb{R})$ 
+    should give the subsapce $C_0^0(\bigl[ -n, n \bigr])$ natural Banach space structure.
+\end{example}
+\end{document}
