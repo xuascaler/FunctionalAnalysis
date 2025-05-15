@@ -150,17 +150,50 @@ Roughly speaking, a topological vector space is a vector space endowed with a to
     \[
         \mathbb{R}(\textnormal{or } \mathbb{C}) \times X \rightarrow X, (\alpha, x) \rightarrow \alpha x
     \]
-    are continuous.(We use product topology on $X \times X, \mathbb{R} \times X$)
+    are continuous.(We use product topology on $X \times X, \mathbb{R} \times X$) \\
+    By definition, the continuity of vector addition and scalar multipliation means
+    \begin{itemize}
+        \item $\forall x \in X, y \in X, \forall V \in \mathcal{F}_{x + y}, \exists U_x \in \mathcal{F}_x, \exists U_y \in \mathcal{F}_y$
+        s.t. $U_x + U_y \subset V$.
+        \item $\forall \alpha \in \mathbb{R}, \forall V \in \mathbb(F)_{\alpha x}, \exists \epsilon > 0, U_x \in \mathcal{F}_x$
+        s.t. $(\alpha - \epsilon, \alpha + \epsilon) \cdot U_x \subset V$.
+    \end{itemize}
     \begin{remark} \hfill
         \begin{itemize}
             \item For any $A, B \subset X$, we denote $A + B = \{ x + y \mid x \in A, y \in B\}$
-            \item For any $I \subset \mathbb{R}, A \subset X$, we denote $I \dot A = \{ \alpha x \mid \alpha \in I, x \in A\}$
+            \item For any $I \subset \mathbb{R}, A \subset X$, we denote $I \cdot A = \{ \alpha x \mid \alpha \in I, x \in A\}$
         \end{itemize}
-        \begin{example}
+        \begin{example} \hfill
             \begin{itemize}
-                \item $A = \{(x, 0) \mid -1 \le x \le 0\}$
+                \item example $+$
+                \[ A = \{(x, 0) \mid -1 \le x \le 0\}, B = \{(1, y) \mid -1 \le y \le 1\} \]
+                \[A + B = \{(x, y) \mid 0 \le x \le 2, -1 \le y \le 1\}\]
+                \item example $\cdot$
+                \[A = \{(1, 0), (2, 0)\} \]
+                \[2A = \{(2, 0), (4, 0)\} \ne A + A = \{(2, 0), (3, 0), (4, 0)\}\]
             \end{itemize}
         \end{example}
+        \begin{itemize}
+            \item For any $a \in X$, one has a $translation operator$
+            \[
+                T_a: X \rightarrow X, x \rightarrow T_a(x) = a + x
+            \]
+            \item For any $0 \ne \alpha \in \mathbb{R}$, one has a multipliation operator.
+            \[
+                M_\alpha : X \rightarrow X, x \rightarrow M_\alpha(x) = \alpha x
+            \]
+        \end{itemize}
+        \begin{property}
+            For any $a \in X$ and any $0 \ne \alpha \in \mathbb{R}$, $T_a$ and $M_\alpha$ are homeomorphisms.
+            \begin{proof}
+                $T_a$ and $M_{\alpha}$ are both invertable, with inverse $T_{-a}$ and $M_{\frac{1}{\alpha}}$ respectively.
+                Moreover, they are all continuous according to the continuity of vector addition and scalar multipliation.
+            \end{proof}
+        \end{property}
+        \begin{corollary}
+            A subsset $A$ is open if and only if $a + A$ is open. 
+            So $\mathcal{F}$ is determined byany local base $\mathcal{F}_{0}'$ at $0$.
+        \end{corollary}
     \end{remark}
 \end{definition}
 \end{document}
