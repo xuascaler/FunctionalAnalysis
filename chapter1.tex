@@ -33,7 +33,7 @@ Functional analysis is infinite dimensional linear algebra.
 \begin{itemize}
     \item In (finite dimensional) linear algebra we study properties of $\mathbb{R}_n$ and 
     linear maps from $\mathbb{R}^n$ to $\mathbb{R}^m$(or $\mathbb{C}^n$ to $\mathbb{C}^m$).
-    For example, one of the major theorems in linera algebra is
+    For example, one of the major theorems in linear algebra is
     \begin{theorem}
         Let $\mathcal{F}:\mathbb{R}^n \rightarrow \mathbb{R}^n$ be a linear map whose matrix is symmetric.
         then we can find orthogonal set of vectors $\overrightarrow{v_{1}}, ......, \overrightarrow{v_{n}}$
@@ -47,7 +47,7 @@ Functional analysis is infinite dimensional linear algebra.
     and "linear maps" between them. For example,
     \begin{enumerate}
         \item $L^2(\mathbb{R}) \textnormal{ is a vector space: } f, g \in L_2(\mathbb{R}) \Rightarrow \lambda f + \mu g \in L_2(\mathbb{R})$
-        \item The map $\int : L^1(\mathbb{R}) \rightarrow \mathbb{R}, f \rightarrow \int_{\mathbb{R}}{|f(x)|}dx$ is a linear map.
+        \item The map $\int : L^1(\mathbb{R}) \rightarrow \mathbb{R}, f \rightarrow \int_{\mathbb{R}}{|f(x)|}dx$ is a linear map.(I think this is a mistake)
     \end{enumerate}
     We will see how to extend the above theorem to infinite dimensional case.
 \end{itemize}
@@ -99,7 +99,7 @@ Note: We mainly work on linear functional analysis.
     A Hamel basis for a vector space $V$ is a set of linearly independent vectors in $V$ so that every $x \in V$
     can be wriiten uniquely as a finite linear combination of elements in this set.
     \begin{example}
-        $\{1, x, x_2, ......, x_n\}$ is Hamel basis of $\mathcal{P}$ in previous example.
+        $\{1, x, x^2, ......, x^n\}$ is Hamel basis of $\mathcal{P}$ in previous example.
     \end{example}
     Every vector space admits a Hamel basis (by the axiom of choice).(see proof in appendix)
     But for most interesting infinite demensional vector spaces, its Hamel basis has uncountable cardinality.
@@ -175,7 +175,7 @@ We define a function $\|\cdot\|:X \rightarrow \mathbb{R}$ by $\|x\|=d(x, 0)$.
 \end{definition}
 \begin{property}
 If $(X, \|\cdot\|)$ is a normed vector space, then the function $d(x, y):=\|x-y\|$
-defines a metric a $X$ which is compatibale with vector space structures.
+defines a metric a $X$ which is compatibale with vector space structures
 i.e. d satisfies (1), (2), (3), (a), (b).
 \begin{proof}
     Exercise.

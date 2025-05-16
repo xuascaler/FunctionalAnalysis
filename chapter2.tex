@@ -68,8 +68,8 @@ Suppose a sequence $\{x_n\}$ converges in $(X, d)$, then
     \begin{enumerate}
         \item Suppose $x_n \rightarrow x_0$, then for $\epsilon = 1, \exists N$, 
         s.t. $\forall i > N$, $d(x_n, x_0) < 1$.
-        Let $C = max(d(x_n, x1), d(x_n, x_1),......,d(x_n, x_0)) + 1$,
-        Then $d(x_n, x_0) < C \forall 1 \le i < \infty$
+        Let $C = max(d(x_0, x_1), d(x_0, x_2),......,d(x_0, x_n)) + 1$,
+        Then $\forall 1 \le i < \infty, d(x_n, x_0) < C $
         So $\{x_i\}$ is bounded.
         \item Suppose $x_i \rightarrow x_0$ and $x_i \rightarrow x_0'$.
         $\forall \epsilon > 0, \exists N, N'$ s.t.
@@ -97,7 +97,7 @@ like to work on complete spaces. As in mathmatical analysis, we define
         \item Banach space will be one of the main object in this course.
     \end{itemize}
     \begin{example}
-        $d(x, y) = (\sum_{i=1}^{n}{(x_i-y_i)})^\frac{1}{2}$ is a complete metric on $\mathbb{R}^n$.\\
+        $d(x, y) = (\sum_{i=1}^{n}{(x_i-y_i)^2})^\frac{1}{2}$ is a complete metric on $\mathbb{R}^n$.\\
         $\|x\|=(\sum_{i=1}^{n}{x_i^2})^\frac{1}{2}$, $(\mathbb{R}^n, \|\cdot\|)$ is a Banach space.
     \end{example}
     \begin{example}
@@ -129,7 +129,7 @@ like to work on complete spaces. As in mathmatical analysis, we define
                 \begin{proof}
                     Let $\{f_n\}$ be a Cauchy sequence, $\forall \epsilon > 0, \exists N > 0$, s.t.
                     $d_0(f_n, f_m) = \sup_{0 \le x \le 1}|f_n(x) - f_m(x)| < \epsilon$.
-                    Then for any fixed $x \in [0, 1]$, the sequence (of scalars) $\{f_n(x)\}$ is a Cauchy sequence in R.
+                    Then for any fixed $x \in [0, 1]$, the sequence (of scalars) $\{f_n(x)\}$ is a Cauchy sequence in $\mathbb{R}$.
                     It follows that there exists $f_0(x)$ s.t. $f_n(x) \rightarrow f_0(x)$(use Completeness of $\mathbb{R}$).
                     Since $|f_n(x) - f_m(x)| < \epsilon$. letting $m \rightarrow \infty$ we get
                     $|f_n(x) - f_0(x)| \le \epsilon, \forall n > N, \forall x \in X$.
@@ -138,7 +138,7 @@ like to work on complete spaces. As in mathmatical analysis, we define
                     By results in mathmatical analysis, $f_0$ is continuous and 
                     $f_n \rightarrow f_0(\sup_{0 \le x \le 1}{|f_n(x) - f_0(x)|} < \epsilon, \forall n > N)$ 
                     in $(C([0, 1]), d_0)$
-                    (Finally, since each \(f_n\) is continuous and the uniform limit of continuous functions is continuous, 
+                    (Finally, each \(f_n\) is continuous, then the uniform limit of continuous functions is continuous, 
                     \(f\in C([0,1])\).
                     We have thus found a limit \(f\in C([0,1])\) of the Cauchy sequence \(\{f_n\}\) in the metric \(d_0\).  
                     This shows \((C([0,1]),d_0)\) is complete. See the proof in appendix)
@@ -180,10 +180,10 @@ like to work on complete spaces. As in mathmatical analysis, we define
                     \item $X$ is a vector space because for 
                     $\mathbf{x}=(a_1, a_2, a_3, ...), \mathbf{y}=(b_1, b_2, b_3, ...)$,
                     \[
-                    x + y \in X: \sum_{i=1}^{\infty}{a_i + b_i} \le \sum_{i=1}^{\infty}{|a_i|} + \sum_{i=1}^{\infty}{|b_i|} < \infty
+                    x + y \in X: |\sum_{i=1}^{\infty}{a_i + b_i}| \le \sum_{i=1}^{\infty}{|a_i|} + \sum_{i=1}^{\infty}{|b_i|} < \infty
                     \]
                     \[
-                    \alpha x \in X: \sum_{i=1}^{\infty}{\alpha a_i} = |\alpha|\sum_{i=1}^{\infty}{|a_i| < \infty}
+                    \alpha x \in X: |\sum_{i=1}^{\infty}{\alpha a_i}| = |\alpha|\sum_{i=1}^{\infty}{|a_i| < \infty}
                     \]
                     The axioms hold in an obvious way.
                     \item $\|\cdot\|$ is norm since
@@ -202,21 +202,21 @@ like to work on complete spaces. As in mathmatical analysis, we define
                     \[
                         \Rightarrow \exists a_l^0 \in \mathbb{R} \textnormal{ s.t. } a_l^j \xrightarrow{j \rightarrow \infty} a_l^0.
                     \]
-                    We want to show that $x_0=(a_l^0) \in l^1$, and $x^j \rightarrow x^0$ in $(X, d)$ with $d(x, y) = \|x -y\|, $
+                    We want to show that $x^0=(a_l^0) \in l^1$, and $x^j \rightarrow x^0$ in $(X, d)$ with $d(x, y) = \|x -y\|, $
                     To prove this, we choose $M$ large so that $\sum_{i=M}^{\infty}{|a_i^N|} < \epsilon$
-                    Then for $j > N$, we have
+                    then for $j > N$, we have
                     \[
                         \sum_{i=M}^{\infty}{|a_i^j|} \le \sum_{i=M}^{\infty}{|a_i^j - a_i^N| + \sum_{i=M}^{\infty}{|a_i^N|}} < 2 \epsilon
                     \]
                     letting $j \rightarrow \infty$, we get $\sum_{i=M}^{\infty}{a_i^0} < 2 \epsilon$. so $x^0 \in l^1$.
                     Moreover, choose $j > N$ large enough, we can get
                     \[
-                        \sum_{i=1}^{M-1}{|a_i^j - a_j^0|} < \epsilon,
+                        \sum_{i=1}^{M-1}{|a_i^j - a_i^0|} < \epsilon,
                         \sum_{i=M}^{\infty}{|a_i^j|} < 2\epsilon,
-                        \sum_{i=M}^{M-1}{|a_i^0|} < 2\epsilon
+                        \sum_{i=M}^{\infty}{|a_i^0|} < 2\epsilon
                     \]
                     \[
-                        \Rightarrow \sum_{1}^{\infty}{|a_i^j - a_i^0|} \le \sum_{i=1}^{M}{|a_i^j - a_i^0|} + \sum_{i=M}^{\infty}{a_i^0} < 5 \epsilon.
+                        \Rightarrow \sum_{1}^{\infty}{|a_i^j - a_i^0|} \le \sum_{i=1}^{M-1}{|a_i^j - a_i^0|} + \sum_{i=M}^{\infty}{|a_i^0|} + \sum_{i=M}^{\infty}{|a_i^j|} < 5 \epsilon.
                     \]
                     So $x^j \rightarrow x^0$ in $(l^1, d)$.
                 \end{itemize}        
