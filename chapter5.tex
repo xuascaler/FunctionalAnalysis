@@ -71,11 +71,14 @@ Let $(X, \mathcal{F})$ be a topological space.
     $
   \end{proof}
 \end{example}
-A set $E \subset X$ is absorbing if 
-$
-\forall x \in X, \exists \delta > 0 \textnormal{ s.t. } \delta x \in E 
-\forall |\alpha| < \delta.
+\begin{definition}
+  A set $E \subset X$ is absorbing if 
+  $
+  \forall x \in X, \exists \delta > 0 \textnormal{ s.t. } \delta x \in E, 
+  \forall |\alpha| < \delta.
 $(Obviously $0 = 0 * x \in E$)
+  
+\end{definition}
 
 \begin{property}
 In a topological vector space, any neigborhood of $0$ is absorbing.
@@ -96,7 +99,7 @@ In a topological vector space, any neigborhood of $0$ is absorbing.
     \forall     
     $
     $
-    Y' \subset Y, Y' \textnormal{ is open set }
+    Y' \subset Y, Y' \textnormal{ is open set,}
     $
     the preimage of $Y'$ is open set. 
   \end{remark}
@@ -105,7 +108,7 @@ In a topological vector space, any neigborhood of $0$ is absorbing.
 \end{proof}
 \end{property}
 \begin{corollary}
-  For any neigborhood of $0, X = \cup_{k=1}^{\infty}(kU)$
+  For any neigborhood $U$ of $0, X = \cup_{k=1}^{\infty}(kU)$
   \begin{proof}
     $
       \forall x \in X, \exists k, 
@@ -124,7 +127,7 @@ In a topological vector space, any neigborhood of $0$ is absorbing.
     Since $0 + 0 = 0$, and addition is continuous, 
     for the neigborhood $U$ of $0$, one can find neigborhoods $U_1, U_2$
     of $0$ s.t. $U_1 + U_2 \subset U$. 
-    Take $V = U_1 \cap U_2 \cap -U_1 \cap -U_2$. 
+    Take $V = U_1 \cap U_2 \cap (-U_1) \cap (-U_2)$. 
     $V$ is symmetric and $0 \in V$. 
     $V \subset U_1, V \subset U_2, V + V \subset U$.
   \end{proof}
@@ -133,6 +136,19 @@ In a topological vector space, any neigborhood of $0$ is absorbing.
     $V + V + V + V \subset U$
   \end{remark}
 \end{property}
+\begin{definition}
+  A neigborhood of $0$ in $X$ in balanced if $\alpha E \subset E$ for all $\alpha$ with $|\alpha| \le 1$.
+  \begin{remark} \hfill
+    \begin{enumerate}
+      \item If $E$ is balanced, than $E$ is symmetric. since 
+      \[-E \subset E, -(-E) \subset -E\].
+      \item If $A, B$ are balanced, so is $A + B$.
+    \end{enumerate}
+  \end{remark}
+  \begin{property}
+    In a Topological vector space, any neigborhood 
+  \end{property}
+\end{definition}
 
 \end{document}
 
