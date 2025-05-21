@@ -140,14 +140,33 @@ In a topological vector space, any neigborhood of $0$ is absorbing.
   A neigborhood of $0$ in $X$ in balanced if $\alpha E \subset E$ for all $\alpha$ with $|\alpha| \le 1$.
   \begin{remark} \hfill
     \begin{enumerate}
-      \item If $E$ is balanced, than $E$ is symmetric. since 
+      \item If $E$ is balanced, then $E$ is symmetric. since 
       \[-E \subset E, -(-E) \subset -E\].
       \item If $A, B$ are balanced, so is $A + B$.
     \end{enumerate}
   \end{remark}
   \begin{property}
-    In a Topological vector space, any neigborhood 
+    In a Topological vector space, any neigborhood of $0$ contains a balanced neigborhood of $0$.
+    \begin{proof}
+      Let $U$ be a neigborhood of $0$. By continuity and $0 \cdot 0 = 0$, 
+      one can find $\delta > 0$ and neigborhood $V_1$ of $0$ 
+      s.t. $\beta V_1 \subset U$ for any $\beta$ with $|\beta| < \delta$.
+      Let $V = \cup_{0 < |\beta| < \delta}\beta V_1$, then 
+      \begin{itemize}
+        \item $V$ is open as union of open sets
+        \item $V \subset U$ since each $\beta V_1 \subset U$.
+        \item $V$ is balanced since $|\alpha| \le 1$, 
+              $|\beta| < \delta \Rightarrow |\alpha \beta| < \delta$.
+      \end{itemize}
+    \end{proof}
   \end{property}
+  \begin{corollary}
+    Every topological vector space has a balanced local base.
+    \begin{remark}
+      Simlarly on can prove: any convex neigborhood of $0$ contains a balanced convex neigborhood of $0$.
+      So any locally
+    \end{remark}
+  \end{corollary}
 \end{definition}
 
 \end{document}
