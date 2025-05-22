@@ -163,11 +163,54 @@ In a topological vector space, any neigborhood of $0$ is absorbing.
   \begin{corollary}
     Every topological vector space has a balanced local base.
     \begin{remark}
-      Simlarly on can prove: any convex neigborhood of $0$ contains a balanced convex neigborhood of $0$.
-      So any locally
+      Simlarly one can prove: any convex neigborhood of $0$ contains a balanced convex neigborhood of $0$.
+      So any locally convex topological vector space has a balanced convex local base.
     \end{remark}
   \end{corollary}
+  A subset $E \subset X$ is bounded if for any neigborhood $U$ of $0$ in $X$, $\exists s > 0$ s.t. 
+  $\forall t > s$, we have $E \subset tU$.
+  \begin{property}
+    $E$ is balanced $\Leftrightarrow$ For any sequence $\{x_n\} \subset E$ and any scalar sequence $\alpha_n \rightarrow 0$,
+    one has $\alpha_n x_n \rightarrow 0$
+    \begin{proof} \hfill
+      \begin{itemize}
+        \item $\Rightarrow$, For any neigborhood $U$ of $0$,  
+        we have $\exists s > 0, \forall t > s, E \subset tU$,
+        Since $\alpha_n \rightarrow 0$, $\exists N, \forall n > N, |\alpha_n| < \frac{1}{t}$,
+        we have $|\alpha_n|E \subset U \Rightarrow |\alpha_n|x_n \in U$. we have $|\alpha_n|x_n \rightarrow 0$.
+        $\forall \delta > 0, \exists N, \forall n > N, ||\alpha_n|x_n - 0| = |\alpha_n x_n| = |\alpha_n x_n - 0| < \delta$.
+        So $\alpha_n x_n \rightarrow 0$.
+        \item $\Leftarrow$,
+        If $E$ is not bounded, then for any neigborhood $U$ of 0,
+        $\forall s > 0, \exists t > s, E \not \subset tU$.
+        We fix $U$,
+        now we construct $\{\alpha_n\}, \{x_n\}$.
+        We choose $n \in \mathbb{N}, s = n, \exists t_n > n, \frac{E}{t_n} \not \subset U$,
+        so $\alpha_n = \frac{1}{t_n}, x_n \in E, \frac{x_n}{t_n} \not \in U$.
+        Now we have $\{\alpha_n \rightarrow 0, \alpha_n x_n \not \in U \Rightarrow \alpha_n x_n \not \rightarrow 0\}$.
+        Contradiction!
+      \end{itemize}
+    \end{proof}
+  \end{property}
+  So in particular, if $X$ is a metric space, then $E$ is bounded iff $\exists C > 0, E \subset B(0, C)$.
+  Not every topological vector space admit a bounded open set. In fact,
+  \begin{property}
+    If $V$ is bounded neigborhood of $0$, then for any sequence $\alpha_k \rightarrow 0$, the collection
+    $\{\alpha_k V \mid k = 1, 2, 3...\}$ is a local base of $X$.
+    \begin{proof}
+      We construct a set $W = V \cup -V$, $V \subset W$ and $W$ is bounded and symmetric.
+      For any neigborhood $U$ of 0, $\exists s > 0, \forall t > s, W \subset tU$.
+      Since $\alpha_n \rightarrow 0 \Rightarrow \exists \alpha_n, \frac{1}{|\alpha_n|} > t$,
+      we have $\exists \alpha_n, |\alpha_n| W \subset U$. 
+      $W$ is symmetric, $\alpha_n W \subset U$ $V \subset W \Rightarrow \alpha_n V \subset U$.
+      So ${\alpha_n V}$ is a local base.
+    \end{proof}
+  \end{property}
 \end{definition}
+\begin{definition}
+  $X$ is locally bounded if $0$ has a bounded neigborhood.
+\end{definition}
+So any locally bounded TVS has a countable local base. According the next theorem, it must be metrizable.
 
 \end{document}
 
