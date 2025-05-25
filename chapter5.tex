@@ -10,6 +10,7 @@
 \newtheorem*{definition}{Definition}
 \newtheorem*{remark}{Remark}
 \newtheorem*{example}{Example}
+\newtheorem*{theorem}{Theorem}
 \newtheorem*{corollary}{Corollary}
 
 \begin{document}
@@ -24,9 +25,9 @@ Let $(X, \mathcal{F})$ be a topological space.
     $\forall U \in \mathcal{F}, \exists V \in \mathcal{F}', V \subset U$.
     A base 
     $
-      \mathcal{F}'$ determines $\mathcal{F} \Leftrightarrow
+      \mathcal{F}'$ determines $\mathcal{F} \textnormal{ since } U \subset \mathbb{F} \Rightarrow
       \exists S, \forall U \subset \mathcal{F},
-      U = \{\cup e_i \mid i \in S, e_i \in \mathcal{F}\}
+      U = \{\cup e_i \mid i \in S, e_i \in \mathcal{F}'\}
     $.
     \item  A local base of $x$ is a subcollection 
     $\mathcal{F}_x' \subset \mathcal{F}_x
@@ -37,7 +38,7 @@ Let $(X, \mathcal{F})$ be a topological space.
     $(X, d)$ is a metric space.
     \begin{itemize}
       \item $\mathcal{F}' = \{B(x, r) \mid x \in X, r > 0\}$ is a base.
-      \item $\mathcal{F}' = \{B(x, r), \mid\}$ is a local at x.
+      \item $\mathcal{F}' = \{B(x, r), \mid r > 0\}$ is a local base at x.
       \item $\mathcal{F}' = \{B(x, \frac{1}{n}) \mid n \in \mathbb{N}\}$
       anohter local base at x, countable elements.
     \end{itemize}
@@ -60,7 +61,7 @@ Let $(X, \mathcal{F})$ be a topological space.
   So the topological $\mathcal{F}$ is determined by any local base at $0$ 
   whose elements have special gemometric properties for topological vector space.
 \begin{definition}
-  $X$ is locally convex if there is a local base whose elements is convex.
+  $X$ is locally convex if there is a local base whose elements are convex.
 \end{definition}
 \begin{example}
   Normed Vector Space are locally convex since $\{B(0, r) \mid r > 0\}$ are convex.
@@ -74,7 +75,7 @@ Let $(X, \mathcal{F})$ be a topological space.
 \begin{definition}
   A set $E \subset X$ is absorbing if 
   $
-  \forall x \in X, \exists \delta > 0 \textnormal{ s.t. } \delta x \in E, 
+  \forall x \in X, \exists \delta > 0 \textnormal{ s.t. } \alpha x \in E, 
   \forall |\alpha| < \delta.
 $(Obviously $0 = 0 * x \in E$)
   
@@ -141,7 +142,7 @@ In a topological vector space, any neigborhood of $0$ is absorbing.
   \begin{remark} \hfill
     \begin{enumerate}
       \item If $E$ is balanced, then $E$ is symmetric. since 
-      \[-E \subset E, -(-E) \subset -E\].
+      $-E \subset E, -(-E) \subset -E$.
       \item If $A, B$ are balanced, so is $A + B$.
     \end{enumerate}
   \end{remark}
@@ -167,8 +168,10 @@ In a topological vector space, any neigborhood of $0$ is absorbing.
       So any locally convex topological vector space has a balanced convex local base.
     \end{remark}
   \end{corollary}
-  A subset $E \subset X$ is bounded if for any neigborhood $U$ of $0$ in $X$, $\exists s > 0$ s.t. 
-  $\forall t > s$, we have $E \subset tU$.
+  \begin{definition}
+    A subset $E \subset X$ is bounded if for any neigborhood $U$ of $0$ in $X$, $\exists s > 0$ s.t. 
+    $\forall t > s$, we have $E \subset tU$.
+  \end{definition}
   \begin{property}
     $E$ is balanced $\Leftrightarrow$ For any sequence $\{x_n\} \subset E$ and any scalar sequence $\alpha_n \rightarrow 0$,
     one has $\alpha_n x_n \rightarrow 0$
@@ -211,7 +214,78 @@ In a topological vector space, any neigborhood of $0$ is absorbing.
   $X$ is locally bounded if $0$ has a bounded neigborhood.
 \end{definition}
 So any locally bounded TVS has a countable local base. According the next theorem, it must be metrizable.
-
+\section*{2.Metrization}
+As we mentioned at the begining of this lecture, any metirc space has a countable local base.
+This gives a necessary condition for topological vector space to be metrizable. In fact this is also sufficient,
+and we can say more...
+\begin{theorem}
+  Let $X$ be a topological vector space with a countable local base.
+  Then $X$ is metrizable, and one can choose the metric $d$ s.t.
+  \begin{enumerate}
+    \item $d$ is translation invariant.
+    \item The open balls $B(0, r)$s are balanced.
+    \item Moreover, if $X$ is also locally convex, then $d$ can be chosen so that all open balls are convex.
+  \end{enumerate}
+  \begin{proof} \hfill
+    \begin{itemize}
+      \item One start with a countable local base $\{U_n\}$.
+      Choose a balanced neigborhood $V_1$ of $0$ in $U_1$.
+      Then choose a neigborhood $\tilde{U_{2}}$ of $0$ s.t. 
+      $\tilde{U_{2}} + \tilde{U_{2}} + \tilde{U_{2}} + \tilde{U_{2}} \subset V_1 \cap U_2$.
+      Choose a balanced neigborhood of $V_2$ of $0$ in $\tilde{U_2}$. 
+      Note we have $V_2 + V_2 + V_2 + V_2 \subset V_1$.
+      Continue this way, we get a balanced local base $\{V_n\}$ s.t. 
+      $V_{n+1} + V_{n+1} + V_{n+1} + V_{n+1} \subset V_{n}$.
+      Moreover, if $X$ is locally convex, one can choose $V_n$ s.t. $V_n$ is also convex.
+      \item Let $D = \{r \in \mathbb{Q} \mid r=\sum_{n=1}^{\infty}{C_n(r)2^{-n}}, \textnormal{ only finitely many } C_n(r)=1,
+      \textnormal{ other } C_n(r) = 0\}$. So elements of $D$ are $2-$adic rationals with finite digits.
+      \begin{remark}
+        $D$ is dense in $[0, 1)$.
+      \end{remark}
+      \item For any $r \in D$, we define $A(r)$ to be the subset
+        $A(r) = C_1(r)V_1 + C_2(r)V_2 + C_3(r)V_3 + ...$(finite sum, so it make sense).
+        For $r \ge 1$, set $A(r) = X$.
+        \begin{property}
+          $\forall r, s \in D,A(r) + A(s) \subset A(r+s)$.
+          \begin{proof} 
+            \[r = \sum_{1}^{M}{C_n(r)2^{-n}}, s = \sum_{1}^{N}{C_n(s)2^{-n}}\]
+            we choose $K = \max{\{M, N\}}$.
+            \[r = \sum_{1}^{K}{C_n(r)2^{-n}}, s = \sum_{1}^{K}{C_n(s)2^{-n}}, r+s = \sum_{1}^{K}{C_n(r+s)2^{-n}}\]
+            $V_{n+1} + V_{n+1} + V_{n+1} + V_{n+1} \subset V_{n} \Rightarrow V_{n+1} + V_{n+1} \subset V_n$,
+            so we have $\sum_{1}^{2^i}{V_{K - i}} \subset V_{K}$.
+            $C_n(r) + C_n(s)$ can be $\{0, 1, 2\}$, if $C_n(r) + C_n(s) = 2$, $V_n + V_n \subset V_{n+1}$,
+            we can have $A(s) + A(r) \subset A(s+t)$.
+          \end{proof}
+        \end{property}
+        \begin{remark} \hfill
+          \begin{itemize}
+            \item Each $A(r)$ is balanced.
+            $(A, B \textnormal{ are balanced} \Rightarrow A + B \textnormal{ is balanced.})$
+            \item $\forall r < s, A(r) \subset A(s)$.$(A(r) + A(s - r) \subset A(s), 0 \in A(s-r))$
+          \end{itemize}
+        \end{remark}
+        \item $f(x) = \inf{\{r:x\in A(r)\}}$. Then $0 \le f(x) \le 1$, and
+        \begin{itemize}
+          \item $f(0) = 0 \textnormal{ since } \forall r, 0 \in A(r)$
+          \item If $x \ne 0$, then $\exists N, \forall n \ge N, x \not\in V_n, \Rightarrow f(x) \ge 2^{-N}$,
+          since $V_N = A(2^{-N}), 2^{-N} \in D$.
+          \item $f(x) = f(-x)$ since $A(r)$ is balanced $\Rightarrow A(r)$ is symmetric.
+          \item $f(x+y) \le f(x) + f(y)$
+            \begin{proof}
+              It is enough to check this for $f(x) + f(y) < 1$.
+              For $\epsilon > 0, \exists r, s \in D \textnormal{(since $D$ is dense.)}$,
+              $f(x) < r < f(x) + \epsilon, f(y) < s < f(y) + \epsilon$.
+              So $x \in A(r), y \in A(s)$.
+              So $x + y \in A(r + s)$, i.e. $f(x+y) \le r + s < f(x) + f(y) + 2 \epsilon$
+              This is true for $\forall \epsilon > 0$, so $f(x+y) \le f(x) + f(y)$.
+            \end{proof}
+        \end{itemize}
+          \item Now it is standard $d(x, y) = f(x - y)$ define a translation-invariant metric on $X$.
+          Finally, by definition the open balls centered at $0$ are $B(0, \delta) = \{x:f(x) < \epsilon\} = \cup_{r < \delta}{A(r)}$.
+          They are the local basis of the original topology since $\forall r < 2^{-n}, A(r) \subset V_n \Rightarrow \forall \delta < 2^{-n}, B(0, \delta) \subset V_n$.
+          In view of the fact $0 < r < s, A(r) \subset A(s)$, it is easy to see that $B(0, \delta)$ is balanced since each $A(r)$ is balanced
+          and if each $V_n$ is convex, so is $A(r)$, and that so is $B(0, \delta)$, and thus so is $B(x, \delta)$.
+    \end{itemize}
+  \end{proof}
+\end{theorem}
 \end{document}
-
-
